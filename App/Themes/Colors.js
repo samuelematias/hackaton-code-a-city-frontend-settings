@@ -35,7 +35,9 @@ const colors = {
 	disabled: 'rgba(236, 236, 236, 0.3)',
 	warning: '#f5a623',
 	purpleAccent: '#6c40be',
-	grayAccent: '#676767'
+	grayAccent: '#676767',
+	black: '#1f2833',
+	orangeAccent: '#e36d0d'
 };
 
 export default colors;

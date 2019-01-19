@@ -33,7 +33,8 @@ const images = {
 	iconCategory1: require('../Images/Icons/icon-category-1.png'),
 	iconCategory2: require('../Images/Icons/icon-category-2.png'),
 	jambo: require('../Images/logo-jambo.png'),
-	iconFb: require('../Images/Icons/icon-fb.png')
+	iconFb: require('../Images/Icons/icon-fb.png'),
+	newJambo: require('../Images/new-logo-jambo.png')
 };
 
 export default images;
