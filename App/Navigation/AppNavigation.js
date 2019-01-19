@@ -11,11 +11,12 @@ import AboutScreen from '../Containers/AboutScreen';
 import WelcomeScreen from '../Containers/WelcomeScreen';
 import InputScreen from '../Containers/InputScreen';
 import LoginScreen from '../Containers/LoginScreen';
+import HomeScreen from '../Containers/HomeScreen';
 
 const TabNav = TabNavigator(
 	{
-		LaunchScreenTab: {
-			screen: LaunchScreen
+		HomeScreenTab: {
+			screen: HomeScreen
 		},
 		ExampleScreenTab: {
 			screen: ExampleScreen
@@ -28,7 +29,7 @@ const TabNav = TabNavigator(
 		tabBarPosition: 'bottom',
 		animationEnabled: false,
 		swipeEnabled: false,
-		initialRouteName: 'ExampleScreenTab',
+		initialRouteName: 'HomeScreenTab',
 		tabBarOptions: {
 			showLabel: true,
 			showIcon: true,

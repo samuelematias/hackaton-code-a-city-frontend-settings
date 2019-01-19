@@ -127,6 +127,7 @@ class LoginScreen extends Component {
      */
 	_renderInput = () => {
 		const { email, password, visible } = this.state;
+		const { navigation } = this.props;
 		return (
 			<KeyboardAwareScrollView>
 				<View style={styles.keyboard}>
@@ -169,6 +170,7 @@ class LoginScreen extends Component {
 								<Button
 									labelButton={'Entrar'}
 									buttonStyle={styles.actionButtonStyle}
+									onPress={() => navigation.navigate('HomeScreenTab')}
 								/>
 							</View>
 
@@ -194,7 +196,6 @@ class LoginScreen extends Component {
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-				<StatusBarColor backgroundColor="#fff" barStyle="light-content" />
 				<ScrollView style={styles.container}>
 					<View style={styles.centered}>
 						<Image source={Images.newJambo} style={styles.logo} />

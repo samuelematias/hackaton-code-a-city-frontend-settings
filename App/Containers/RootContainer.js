@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, StatusBar } from 'react-native';
+import { View } from 'react-native';
 
+import { StatusBarColor } from '../Components/Common';
 import AppNavigation from '../Navigation/AppNavigation';
 
 // Styles
@@ -10,7 +11,7 @@ class RootContainer extends Component {
 	render() {
 		return (
 			<View style={styles.applicationView}>
-				<StatusBar barStyle="light-content" />
+				<StatusBarColor backgroundColor="#fff" barStyle="light-content" />
 				<AppNavigation />
 			</View>
 		);
