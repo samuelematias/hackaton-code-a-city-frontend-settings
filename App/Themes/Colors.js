@@ -37,7 +37,8 @@ const colors = {
 	purpleAccent: '#6c40be',
 	grayAccent: '#676767',
 	black: '#1f2833',
-	orangeAccent: '#e36d0d'
+	orangeAccent: '#e36d0d',
+	greyAccent: '#a0a0a0'
 };
 
 export default colors;

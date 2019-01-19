@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native';
-import { Images } from '../Themes';
+import { Images, Colors } from '../Themes';
 
 // Styles
 import styles from './Styles/HomeScreenStyles';
@@ -13,7 +13,7 @@ class HomeScreen extends Component {
 				return (
 					<Image
 						style={styles.iconHeader}
-						source={Images.iconRadarActive}
+						source={Images.iconHomeActive}
 						resizeMode={'contain'}
 					/>
 				);
@@ -21,7 +21,7 @@ class HomeScreen extends Component {
 				return (
 					<Image
 						style={styles.iconHeader}
-						source={Images.iconRadarInactive}
+						source={Images.iconHomeInactive}
 						resizeMode={'contain'}
 					/>
 				);
@@ -33,11 +33,11 @@ class HomeScreen extends Component {
 					style={[
 						styles.label,
 						{
-							color: focused ? '#3F51B5' : '#404040'
+							color: focused ? Colors.black : Colors.greyAccent
 						}
 					]}
 				>
-					{'Launch'}
+					{'Cursos'}
 				</Text>
 			</View>
 		)
@@ -52,11 +52,6 @@ class HomeScreen extends Component {
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-				<Image
-					source={Images.background}
-					style={styles.backgroundImage}
-					resizeMode="stretch"
-				/>
 				<ScrollView style={styles.container}>
 					<View style={styles.centered}>
 						<Image source={Images.launch} style={styles.logo} />

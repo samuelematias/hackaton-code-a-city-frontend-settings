@@ -201,7 +201,7 @@ class LoginScreen extends Component {
 					<View style={styles.centered}>
 						<Image source={Images.newJambo} style={styles.logo} />
 					</View>
-					<View style={styles.section}>{this._renderInput()}</View>
+					<View style={styles.customSection}>{this._renderInput()}</View>
 				</ScrollView>
 			</View>
 		);

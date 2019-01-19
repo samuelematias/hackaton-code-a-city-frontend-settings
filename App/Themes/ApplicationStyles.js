@@ -25,6 +25,10 @@ const ApplicationStyles = {
 		},
 		section: {
 			margin: Metrics.section,
+			padding: Metrics.baseMargin
+		},
+		customSection: {
+			margin: Metrics.section,
 			paddingLeft: Metrics.baseMargin,
 			paddingRight: Metrics.baseMargin
 		},
