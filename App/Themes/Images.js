@@ -15,7 +15,24 @@ const images = {
 	iconLeading: require('../Images/Icons/leading-icon.png'),
 	eye: require('../Images/Icons/eye.png'),
 	eyeOff: require('../Images/Icons/eye-off.png'),
-	clear: require('../Images/Icons/clear.png')
+	clear: require('../Images/Icons/clear.png'),
+	courses: require('../Images/courses.png'),
+	iconLesson1: require('../Images/lesson-1.png'),
+	iconLesson2: require('../Images/lesson-2.png'),
+	iconCourse: require('../Images/Icons/course.png'),
+	iconClock: require('../Images/Icons/clock.png'),
+	iconArrowLeftBlack: require('../Images/Icons/icon-arrow-left-black.png'),
+	iconArrowLeftWhite: require('../Images/Icons/icon-arrow-left-white.png'),
+	iconBigClock: require('../Images/Icons/icon-big-clock.png'),
+	iconBookActive: require('../Images/Icons/icon-book-active.png'),
+	iconBookInactive: require('../Images/Icons/icon-book-inactive.png'),
+	iconHomeActive: require('../Images/Icons/icon-home-active.png'),
+	iconHomeInactive: require('../Images/Icons/icon-home-inactive.png'),
+	iconUserActive: require('../Images/Icons/icon-user-active.png'),
+	iconUserInactive: require('../Images/Icons/icon-user-inactive.png'),
+	iconCategory1: require('../Images/Icons/icon-category-1.png'),
+	iconCategory2: require('../Images/Icons/icon-category-2.png'),
+	jambo: require('../Images/logo-jambo.png')
 };
 
 export default images;
