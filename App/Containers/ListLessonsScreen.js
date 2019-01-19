@@ -8,46 +8,13 @@ import {
 	FlatList
 } from 'react-native';
 import { Images, Colors } from '../Themes';
-import { StatusBarColor, Button } from '../Components/Common';
-// Styles
-import styles from './Styles/CourseScreenStyles';
 
-class CourseScreen extends Component {
+// Styles
+import styles from './Styles/ListLessonsStyle';
+
+class ListLessonsScreen extends Component {
 	static navigationOptions = ({ navigation }) => ({
-		header: null,
-		tabBarIcon: ({ focused }) => {
-			if (focused) {
-				return (
-					<Image
-						style={styles.iconHeader}
-						source={Images.iconHomeActive}
-						resizeMode={'contain'}
-					/>
-				);
-			} else {
-				return (
-					<Image
-						style={styles.iconHeader}
-						source={Images.iconHomeInactive}
-						resizeMode={'contain'}
-					/>
-				);
-			}
-		},
-		tabBarLabel: ({ focused }) => (
-			<View style={styles.wrapperTabBarLabel}>
-				<Text
-					style={[
-						styles.label,
-						{
-							color: focused ? Colors.black : Colors.greyAccent
-						}
-					]}
-				>
-					{'Cursos'}
-				</Text>
-			</View>
-		)
+		header: null
 	});
 
 	constructor(props) {
@@ -57,77 +24,6 @@ class CourseScreen extends Component {
 	}
 
 	_keyExtractor = item => item.id;
-
-	_renderSwipeableCard = item => {
-		const { navigation } = this.props;
-		const cardId = item.id;
-		const cardThumbnail = item.thumbnail;
-		const cardTitle = item.title;
-		const cardAbout = item.about;
-		const cardTotalHours =
-			item.totalHours === 1
-				? item.totalHours + ' Hora'
-				: item.totalHours + ' Horas';
-
-		return (
-			<TouchableOpacity
-				key={cardId}
-				style={styles.contentSwipeableCardsList}
-				onPress={() => navigation.navigate('Lessons')}
-			>
-				<View style={styles.wrapperSwipeableCard}>
-					<Image
-						source={cardThumbnail}
-						style={styles.thumbnailSwipeableCard}
-						resizeMode={'contain'}
-					/>
-				</View>
-				<View>
-					<Text
-						numberOfLines={2}
-						ellipsizeMode={'tail'}
-						style={styles.titleSwipeableCard}
-					>
-						{cardTitle}
-					</Text>
-				</View>
-				<View style={{ marginTop: 10 }}>
-					<Text
-						numberOfLines={2}
-						ellipsizeMode={'tail'}
-						style={styles.aboutSwipeableCard}
-					>
-						{cardAbout}
-					</Text>
-				</View>
-				<View style={styles.wrapperHour}>
-					<View>
-						<Image
-							source={Images.iconFree}
-							style={styles.iconFreeSwipeableCard}
-							resizeMode={'cover'}
-						/>
-					</View>
-					<View style={{ paddingLeft: 8 }}>
-						<Image
-							source={Images.iconBigClock}
-							style={styles.iconHourSwipeableCard}
-							resizeMode={'cover'}
-						/>
-					</View>
-					<View style={{ paddingLeft: 5 }}>
-						<Text
-							numberOfLines={2}
-							ellipsizeMode={'tail'}
-							style={styles.hoursSwipeableCard}
-						>
-							{cardTotalHours}
-						</Text>
-					</View>
-				</View>
-			</TouchableOpacity>
-		);
-	};
 
 	_renderSwipeableCardsList = () => {
 		const data = [
@@ -201,22 +97,33 @@ class CourseScreen extends Component {
 	};
 
 	render() {
+		const { navigation } = this.props;
 		return (
 			<View style={styles.mainContainer}>
 				<View style={styles.wrapperSectionTitle}>
+					<TouchableOpacity
+						style={styles.wrapperHeaderLeft}
+						onPress={() => {
+							navigation.goBack();
+						}}
+					>
+						<Image
+							style={styles.iconArrowLeft}
+							source={Images.iconArrowLeftOrange}
+							resizeMode={'contain'}
+						/>
+					</TouchableOpacity>
 					<Text
 						numberOfLines={2}
 						ellipsizeMode={'tail'}
 						style={styles.sectionTitleStyle}
 					>
-						{'Cursos'}
+						{'Lessons'}
 					</Text>
 				</View>
 				<ScrollView style={styles.container}>
 					<View style={styles.wrapperContent}>
-						<View style={styles.wrapperSwipeableCardsList}>
-							{this._renderSwipeableCardsList()}
-						</View>
+						<View style={styles.wrapperSwipeableCardsList} />
 					</View>
 				</ScrollView>
 			</View>
@@ -224,4 +131,4 @@ class CourseScreen extends Component {
 	}
 }
 
-export default CourseScreen;
+export default ListLessonsScreen;

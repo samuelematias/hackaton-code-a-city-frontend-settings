@@ -196,7 +196,6 @@ class LoginScreen extends Component {
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-				<StatusBarColor backgroundColor="#fff" barStyle="light-content" />
 				<ScrollView style={styles.container}>
 					<View style={styles.centered}>
 						<Image source={Images.newJambo} style={styles.logo} />

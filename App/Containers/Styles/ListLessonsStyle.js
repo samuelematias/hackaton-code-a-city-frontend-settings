@@ -15,7 +15,6 @@ export default StyleSheet.create({
 	centered: {
 		alignItems: 'center'
 	},
-
 	iconHeader: {
 		height: 20,
 		width: 20
@@ -39,7 +38,7 @@ export default StyleSheet.create({
 		color: '#fff'
 	},
 	wrapperHeaderLeft: {
-		marginLeft: 16
+		marginRight: 16
 	},
 	wrapperHeaderRight: {
 		marginRight: 16
@@ -106,6 +105,12 @@ export default StyleSheet.create({
 		paddingBottom: 10,
 		marginTop: Platform.OS === 'ios' ? 50 : 40,
 		marginLeft: 20,
-		marginRight: 20
+		marginRight: 20,
+		flexDirection: 'row',
+		alignItems: 'center'
+	},
+	iconArrowLeft: {
+		height: 14,
+		width: 14
 	}
 });
