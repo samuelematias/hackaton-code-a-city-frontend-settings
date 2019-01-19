@@ -11,12 +11,12 @@ import AboutScreen from '../Containers/AboutScreen';
 import WelcomeScreen from '../Containers/WelcomeScreen';
 import InputScreen from '../Containers/InputScreen';
 import LoginScreen from '../Containers/LoginScreen';
-import HomeScreen from '../Containers/HomeScreen';
+import CourseScreen from '../Containers/CourseScreen';
 
 const TabNav = TabNavigator(
 	{
-		HomeScreenTab: {
-			screen: HomeScreen
+		CourseScreenTab: {
+			screen: CourseScreen
 		},
 		ExampleScreenTab: {
 			screen: ExampleScreen
@@ -29,7 +29,7 @@ const TabNav = TabNavigator(
 		tabBarPosition: 'bottom',
 		animationEnabled: false,
 		swipeEnabled: false,
-		initialRouteName: 'HomeScreenTab',
+		initialRouteName: 'CourseScreenTab',
 		tabBarOptions: {
 			showLabel: true,
 			showIcon: true,
@@ -62,8 +62,8 @@ const AppNavigation = StackNavigator(
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
-		initialRouteName: 'TabRoot',
-		/* The header config from HomeScreen is now here */
+		initialRouteName: 'Login',
+		/* header main config. */
 		navigationOptions: {
 			headerStyle: {
 				backgroundColor: Colors.purpleAccent

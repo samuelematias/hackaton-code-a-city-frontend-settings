@@ -10,7 +10,7 @@ import {
 import { Images, Colors, Metrics } from '../Themes';
 
 // Styles
-import styles from './Styles/HomeScreenStyles';
+import styles from './Styles/CourseScreenStyles';
 
 class HomeScreen extends Component {
 	static navigationOptions = ({ navigation }) => ({

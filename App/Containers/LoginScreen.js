@@ -170,7 +170,7 @@ class LoginScreen extends Component {
 								<Button
 									labelButton={'Entrar'}
 									buttonStyle={styles.actionButtonStyle}
-									onPress={() => navigation.navigate('HomeScreenTab')}
+									onPress={() => navigation.navigate('CourseScreenTab')}
 								/>
 							</View>
 
