@@ -32,7 +32,8 @@ const images = {
 	iconUserInactive: require('../Images/Icons/icon-user-inactive.png'),
 	iconCategory1: require('../Images/Icons/icon-category-1.png'),
 	iconCategory2: require('../Images/Icons/icon-category-2.png'),
-	jambo: require('../Images/logo-jambo.png')
+	jambo: require('../Images/logo-jambo.png'),
+	iconFb: require('../Images/Icons/icon-fb.png')
 };
 
 export default images;
