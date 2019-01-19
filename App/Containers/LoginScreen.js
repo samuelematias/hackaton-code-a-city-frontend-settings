@@ -60,9 +60,9 @@ class LoginScreen extends Component {
 	}
 
 	renderAccessory = field => {
-		const { email, visible } = this.state;
+		const { email, password, visible } = this.state;
 
-		if (field === 'password') {
+		if (field === 'password' && password) {
 			return (
 				<TouchableOpacity
 					style={styles.inputAccessory}
