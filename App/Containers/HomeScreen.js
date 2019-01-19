@@ -7,7 +7,7 @@ import {
 	TouchableOpacity,
 	FlatList
 } from 'react-native';
-import { Images, Colors } from '../Themes';
+import { Images, Colors, Metrics } from '../Themes';
 
 // Styles
 import styles from './Styles/HomeScreenStyles';
@@ -58,10 +58,11 @@ class HomeScreen extends Component {
 
 	_keyExtractor = item => item.id;
 
-	_renderSwipeableCard = item => {
+	_renderSwipeableGG = item => {
 		const cardId = item.id;
 		const cardThumbnail = item.thumbnail;
 		const cardTitle = item.title;
+		const cardAbout = item.about;
 		const cardTotalHours =
 			item.totalHours === 1
 				? item.totalHours + ' Hora'
@@ -78,6 +79,7 @@ class HomeScreen extends Component {
 						style={styles.thumbnailSwipeableCard}
 						resizeMode={'cover'}
 					/>
+
 					<View style={{ marginLeft: 18 }}>
 						<Text
 							numberOfLines={2}
@@ -86,6 +88,15 @@ class HomeScreen extends Component {
 						>
 							{cardTitle}
 						</Text>
+						<View style={{ marginTop: 10 }}>
+							<Text
+								numberOfLines={2}
+								ellipsizeMode={'tail'}
+								style={styles.aboutSwipeableCard}
+							>
+								{cardAbout}
+							</Text>
+						</View>
 						<View style={styles.wrapperHour}>
 							<View>
 								<Image
@@ -117,48 +128,136 @@ class HomeScreen extends Component {
 		);
 	};
 
+	_renderSwipeableCard = item => {
+		const cardId = item.id;
+		const cardThumbnail = item.thumbnail;
+		const cardTitle = item.title;
+		const cardAbout = item.about;
+		const cardTotalHours =
+			item.totalHours === 1
+				? item.totalHours + ' Hora'
+				: item.totalHours + ' Horas';
+
+		return (
+			<TouchableOpacity style={styles.contentSwipeableCardsList}>
+				<View style={styles.wrapperSwipeableCard}>
+					<Image
+						source={cardThumbnail}
+						style={styles.thumbnailSwipeableCard}
+						resizeMode={'contain'}
+					/>
+				</View>
+				<View>
+					<Text
+						numberOfLines={2}
+						ellipsizeMode={'tail'}
+						style={styles.titleSwipeableCard}
+					>
+						{cardTitle}
+					</Text>
+				</View>
+				<View style={{ marginTop: 10 }}>
+					<Text
+						numberOfLines={2}
+						ellipsizeMode={'tail'}
+						style={styles.aboutSwipeableCard}
+					>
+						{cardAbout}
+					</Text>
+				</View>
+				<View style={styles.wrapperHour}>
+					<View>
+						<Image
+							source={Images.iconFree}
+							style={styles.iconFreeSwipeableCard}
+							resizeMode={'cover'}
+						/>
+					</View>
+					<View style={{ paddingLeft: 8 }}>
+						<Image
+							source={Images.iconBigClock}
+							style={styles.iconHourSwipeableCard}
+							resizeMode={'cover'}
+						/>
+					</View>
+					<View style={{ paddingLeft: 5 }}>
+						<Text
+							numberOfLines={2}
+							ellipsizeMode={'tail'}
+							style={styles.hoursSwipeableCard}
+						>
+							{cardTotalHours}
+						</Text>
+					</View>
+				</View>
+			</TouchableOpacity>
+		);
+	};
+
+	_renderCategories = () => {
+		return (
+			<View>
+				<View />
+			</View>
+		);
+	};
+
 	_renderSwipeableCardsList = () => {
 		const data = [
 			{
 				id: '1',
-				thumbnail: Images.courses,
+				thumbnail: Images.iconLesson1,
 				title: 'Engenharia Civil 1',
+				about:
+					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus.',
 				totalHours: 10
 			},
 			{
 				id: '2',
-				thumbnail: Images.courses,
+				thumbnail: Images.iconLesson2,
 				title: 'Engenharia Civil 2',
+				about:
+					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus.',
 				totalHours: 1
 			},
 			{
 				id: '3',
-				thumbnail: Images.courses,
+				thumbnail: Images.iconLesson1,
 				title: 'Engenharia Civil 3',
+				about:
+					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus.',
 				totalHours: 30
 			},
 			{
 				id: '4',
-				thumbnail: Images.courses,
+				thumbnail: Images.iconLesson2,
 				title: 'Engenharia Civil 4',
+				about:
+					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
 				totalHours: 40
 			},
 			{
 				id: '5',
-				thumbnail: Images.courses,
+				thumbnail: Images.iconLesson1,
 				title: 'Engenharia Civil 5',
+				about:
+					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
 				totalHours: 50
 			},
 			{
 				id: '6',
-				thumbnail: Images.courses,
+				thumbnail: Images.iconLesson2,
 				title: 'Engenharia Civil 6',
+				about:
+					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
 				totalHours: 60
 			},
 			{
 				id: '7',
-				thumbnail: Images.courses,
+				thumbnail: Images.iconLesson1,
 				title: 'Engenharia Civil 7',
+				about:
+					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
 				totalHours: 70
 			}
 		];
@@ -167,7 +266,6 @@ class HomeScreen extends Component {
 				<FlatList
 					data={data}
 					showsHorizontalScrollIndicator={false}
-					horizontal
 					renderItem={({ item }) => this._renderSwipeableCard(item)}
 					keyExtractor={this._keyExtractor}
 				/>
@@ -178,8 +276,21 @@ class HomeScreen extends Component {
 	render() {
 		return (
 			<View style={styles.mainContainer}>
+				<View style={styles.wrapperSectionTitle}>
+					<Text
+						numberOfLines={2}
+						ellipsizeMode={'tail'}
+						style={styles.sectionTitleStyle}
+					>
+						{'Cursos'}
+					</Text>
+				</View>
 				<ScrollView style={styles.container}>
-					<View style={styles.section}>{this._renderSwipeableCardsList()}</View>
+					<View style={styles.wrapperContent}>
+						<View style={styles.wrapperSwipeableCardsList}>
+							{this._renderSwipeableCardsList()}
+						</View>
+					</View>
 				</ScrollView>
 			</View>
 		);

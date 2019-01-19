@@ -45,39 +45,67 @@ export default StyleSheet.create({
 		marginRight: 16
 	},
 	wrapperSwipeableCard: {
-		width: 240,
-		// marginRight: 10,
-		alignItems: 'flex-start',
-		flexDirection: 'column',
-		justifyContent: 'flex-start'
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	thumbnailSwipeableCard: {
-		borderRadius: 3,
-		width: 260,
-		height: 140,
-		marginBottom: 0
+		borderRadius: 5,
+		width: 335,
+		height: 160
 	},
 	titleSwipeableCard: {
 		fontWeight: 'normal',
 		fontSize: 18,
-		color: Colors.lightgrey
+		color: Colors.lightgrey,
+		textAlign: 'center'
 	},
 	hoursSwipeableCard: {
 		fontWeight: 'normal',
-		fontSize: 12,
+		fontSize: 15,
 		color: Colors.skinnerBlack
 	},
 	iconHourSwipeableCard: {
-		width: 10,
-		height: 10
+		width: 14,
+		height: 14
 	},
 	wrapperHour: {
 		flexDirection: 'row',
-		alignItems: 'center',
-		paddingTop: 16
+		paddingTop: 10,
+		marginBottom: 30,
+		flex: 1
 	},
 	iconFreeSwipeableCard: {
 		width: 40,
 		height: 18
+	},
+	contentSwipeableCardsList: {
+		justifyContent: 'center'
+	},
+	wrapperSwipeableCard: {
+		flex: 1,
+		alignItems: 'center'
+	},
+	aboutSwipeableCard: {
+		fontWeight: 'normal',
+		fontSize: 12,
+		color: Colors.lightgrey
+	},
+	sectionTitleStyle: {
+		fontWeight: 'normal',
+		fontSize: 22,
+		color: Colors.skinnerBlack
+	},
+	wrapperContent: {
+		marginTop: Metrics.section,
+		flex: 1,
+		marginLeft: 20,
+		marginRight: 20
+	},
+	wrapperSectionTitle: {
+		paddingBottom: 10,
+		marginTop: Platform.OS === 'ios' ? 60 : 40,
+		marginLeft: 20,
+		marginRight: 20
 	}
 });
