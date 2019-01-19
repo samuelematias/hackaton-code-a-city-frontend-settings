@@ -23,6 +23,7 @@ const images = {
 	iconClock: require('../Images/Icons/clock.png'),
 	iconArrowLeftBlack: require('../Images/Icons/icon-arrow-left-black.png'),
 	iconArrowLeftWhite: require('../Images/Icons/icon-arrow-left-white.png'),
+	iconArrowLeftOrange: require('../Images/Icons/icon-arrow-left-orange.png'),
 	iconBigClock: require('../Images/Icons/icon-big-clock.png'),
 	iconBookActive: require('../Images/Icons/icon-book-active.png'),
 	iconBookInactive: require('../Images/Icons/icon-book-inactive.png'),
