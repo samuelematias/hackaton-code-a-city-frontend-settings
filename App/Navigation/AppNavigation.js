@@ -10,6 +10,7 @@ import ExampleScreen from '../Containers/ExampleScreen';
 import AboutScreen from '../Containers/AboutScreen';
 import WelcomeScreen from '../Containers/WelcomeScreen';
 import InputScreen from '../Containers/InputScreen';
+import LoginScreen from '../Containers/LoginScreen';
 
 const TabNav = TabNavigator(
 	{
@@ -55,11 +56,12 @@ const AppNavigation = StackNavigator(
 	{
 		TabRoot: { screen: TabNav },
 		Welcome: { screen: WelcomeScreen },
-		Input: { screen: InputScreen }
+		Input: { screen: InputScreen },
+		Login: { screen: LoginScreen }
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
-		initialRouteName: 'TabRoot',
+		initialRouteName: 'Login',
 		/* The header config from HomeScreen is now here */
 		navigationOptions: {
 			headerStyle: {

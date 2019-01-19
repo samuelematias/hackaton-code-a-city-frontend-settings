@@ -228,7 +228,10 @@ class ExampleScreen extends Component {
 						<Card>
 							<Text style={styles.sectionTitleStyle}>{'Buttons'}</Text>
 							<CardSection>
-								<Button labelButton={'Enabled'} />
+								<Button
+									labelButton={'Enabled'}
+									onPress={() => navigation.navigate('Login')}
+								/>
 								<Button labelButton={'Disabled'} enabledButton={false} />
 							</CardSection>
 						</Card>

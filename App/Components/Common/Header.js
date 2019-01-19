@@ -1,6 +1,6 @@
 //import libs for making a component
 import React from 'react';
-import { View, Text, AppRegistry } from 'react-native';
+import { View, Text } from 'react-native';
 import styles from './Styles/HeaderStyles';
 
 //make a component
