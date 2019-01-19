@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
-import { Metrics, ApplicationStyles } from '../../Themes/';
+import { Metrics, ApplicationStyles, Colors } from '../../Themes/';
 
 export default StyleSheet.create({
 	...ApplicationStyles.screen,
@@ -43,5 +43,41 @@ export default StyleSheet.create({
 	},
 	wrapperHeaderRight: {
 		marginRight: 16
+	},
+	wrapperSwipeableCard: {
+		width: 240,
+		// marginRight: 10,
+		alignItems: 'flex-start',
+		flexDirection: 'column',
+		justifyContent: 'flex-start'
+	},
+	thumbnailSwipeableCard: {
+		borderRadius: 3,
+		width: 260,
+		height: 140,
+		marginBottom: 0
+	},
+	titleSwipeableCard: {
+		fontWeight: 'normal',
+		fontSize: 18,
+		color: Colors.lightgrey
+	},
+	hoursSwipeableCard: {
+		fontWeight: 'normal',
+		fontSize: 12,
+		color: Colors.skinnerBlack
+	},
+	iconHourSwipeableCard: {
+		width: 10,
+		height: 10
+	},
+	wrapperHour: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		paddingTop: 16
+	},
+	iconFreeSwipeableCard: {
+		width: 40,
+		height: 18
 	}
 });

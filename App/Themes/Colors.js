@@ -38,7 +38,9 @@ const colors = {
 	grayAccent: '#676767',
 	black: '#1f2833',
 	orangeAccent: '#e36d0d',
-	greyAccent: '#a0a0a0'
+	greyAccent: '#a0a0a0',
+	lightgrey: '#585e66',
+	skinnerBlack: '#1f2833'
 };
 
 export default colors;
