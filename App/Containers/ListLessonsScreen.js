@@ -38,7 +38,13 @@ class ListLessonsScreen extends Component {
 			<TouchableOpacity
 				key={lessonId}
 				style={styles.contentLesson}
-				onPress={() => navigation.navigate('LessonDetail')}
+				onPress={() =>
+					navigation.navigate('LessonDetail', {
+						title: lessonTitle,
+						description: lessonAbout,
+						videoLink: lessonVideo
+					})
+				}
 			>
 				<View
 					style={[
@@ -54,7 +60,7 @@ class ListLessonsScreen extends Component {
 				>
 					<Text style={styles.lessonNumber}>{i}</Text>
 				</View>
-				<View style={{ paddingLeft: 20 }}>
+				<View style={{ paddingLeft: 20, flex: 1 }}>
 					<Text
 						style={styles.lessonTitle}
 						numberOfLines={2}
@@ -62,13 +68,15 @@ class ListLessonsScreen extends Component {
 					>
 						{lessonTitle}
 					</Text>
-					<Text
-						style={styles.lessonAbout}
-						numberOfLines={2}
-						ellipsizeMode={'tail'}
-					>
-						{lessonAbout}
-					</Text>
+					<View style={{ marginTop: 5 }}>
+						<Text
+							style={styles.lessonAbout}
+							numberOfLines={2}
+							ellipsizeMode={'tail'}
+						>
+							{lessonAbout}
+						</Text>
+					</View>
 				</View>
 			</TouchableOpacity>
 		);

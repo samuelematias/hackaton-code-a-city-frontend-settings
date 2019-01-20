@@ -46,12 +46,13 @@ export default StyleSheet.create({
 	wrapperSwipeableCard: {
 		flex: 1,
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		backgroundColor: 'red'
 	},
 	thumbnailSwipeableCard: {
 		borderRadius: 5,
-		width: 335,
-		height: 160
+		width: 100,
+		height: 100
 	},
 	titleSwipeableCard: {
 		fontWeight: 'normal',
@@ -81,10 +82,6 @@ export default StyleSheet.create({
 	contentSwipeableCardsList: {
 		justifyContent: 'center'
 	},
-	wrapperSwipeableCard: {
-		flex: 1,
-		alignItems: 'center'
-	},
 	aboutSwipeableCard: {
 		fontWeight: 'normal',
 		fontSize: 12,
@@ -103,11 +100,8 @@ export default StyleSheet.create({
 	},
 	wrapperSectionTitle: {
 		paddingBottom: 10,
-		marginTop: Platform.OS === 'ios' ? 50 : 40,
 		marginLeft: 20,
-		marginRight: 20,
-		flexDirection: 'row',
-		alignItems: 'center'
+		marginRight: 20
 	},
 	iconArrowLeft: {
 		height: 14,
@@ -147,5 +141,38 @@ export default StyleSheet.create({
 	containerBackground: {
 		width: '100%',
 		height: 370
+	},
+	buttonAbsolute: {
+		position: 'absolute',
+		top: 40,
+		left: 20
+	},
+	subTitleStyle: {
+		fontWeight: 'normal',
+		fontSize: 10,
+		color: Colors.skinnerBlack,
+		opacity: 0.6
+	},
+	contentYoutube: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		marginTop: 20
+	},
+	wrapperYoutube: {
+		width: 250,
+		height: 160,
+		backgroundColor: Colors.black,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 5
+	},
+	iconYoutube: {
+		width: 50,
+		height: 50
+	},
+	descriptionStyle: {
+		fontWeight: 'normal',
+		fontSize: 14,
+		color: Colors.skinnerBlack
 	}
 });

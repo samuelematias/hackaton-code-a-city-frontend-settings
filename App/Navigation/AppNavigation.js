@@ -21,7 +21,7 @@ const TabNav = TabNavigator(
 		CourseScreenTab: {
 			screen: CourseScreen
 		},
-		NewsScreen: {
+		NewsScreenTab: {
 			screen: NewsScreen
 		},
 		ProfileScreen: {

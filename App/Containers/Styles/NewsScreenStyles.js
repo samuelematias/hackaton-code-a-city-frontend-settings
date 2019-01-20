@@ -98,12 +98,12 @@ export default StyleSheet.create({
 	wrapperContent: {
 		marginTop: Metrics.section,
 		flex: 1,
-		marginLeft: 20,
+		// marginLeft: 20,
 		marginRight: 20
 	},
 	wrapperSectionTitle: {
 		paddingBottom: 10,
-		marginTop: Platform.OS === 'ios' ? 50 : 40,
+		marginTop: 40,
 		marginLeft: 20,
 		marginRight: 20,
 		flexDirection: 'row',
