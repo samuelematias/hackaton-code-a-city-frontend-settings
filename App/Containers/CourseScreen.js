@@ -113,7 +113,7 @@ class CourseScreen extends Component {
 			<TouchableOpacity
 				key={cardId}
 				style={styles.contentSwipeableCardsList}
-				onPress={() => navigation.navigate('Lessons')}
+				onPress={() => navigation.navigate('Lessons', {item})}
 			>
 				<View style={styles.wrapperSwipeableCard}>
 					<Image
