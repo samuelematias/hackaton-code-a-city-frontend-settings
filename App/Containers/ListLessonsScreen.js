@@ -8,6 +8,7 @@ import {
 	FlatList
 } from 'react-native';
 import { Images, Colors } from '../Themes';
+import { RandomColor } from '../Lib/Utils';
 
 // Styles
 import styles from './Styles/ListLessonsStyle';
@@ -25,63 +26,46 @@ class ListLessonsScreen extends Component {
 
 	_keyExtractor = item => item.id;
 
-	_renderSwipeableCardsList = () => {
+	_renderLesson = (item, index) => {
+		const lessonId = item.id;
+		const lessonTitle = item.title;
+		const lessonAbout = item.about;
+		let i = index + 1;
+		return (
+			<TouchableOpacity key={lessonId} style={styles.contentLesson}>
+				<View
+					style={[
+						styles.wrapperRadius,
+						{
+							backgroundColor: RandomColor()
+								.toLowerCase()
+								.includes('fff')
+								? '#944dff'.toLowerCase()
+								: RandomColor().toLowerCase()
+						}
+					]}
+				>
+					<Text style={styles.lessonNumber}>{i}</Text>
+				</View>
+				<View style={{ paddingLeft: 20 }}>
+					<Text style={styles.lessonTitle}>{lessonTitle}</Text>
+					<Text style={styles.lessonAbout}>{lessonAbout}</Text>
+				</View>
+			</TouchableOpacity>
+		);
+	};
+
+	_renderLessonsList = () => {
 		const data = [
 			{
 				id: '1',
-				thumbnail: Images.iconLesson1,
-				title: 'Engenharia Civil 1',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus.',
-				totalHours: 10
+				title: 'UI Design for the Web',
+				about: 'Get started with the basics.'
 			},
 			{
 				id: '2',
-				thumbnail: Images.iconLesson2,
-				title: 'Engenharia Civil 2',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus.',
-				totalHours: 1
-			},
-			{
-				id: '3',
-				thumbnail: Images.iconLesson1,
-				title: 'Engenharia Civil 3',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus.',
-				totalHours: 30
-			},
-			{
-				id: '4',
-				thumbnail: Images.iconLesson2,
-				title: 'Engenharia Civil 4',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
-				totalHours: 40
-			},
-			{
-				id: '5',
-				thumbnail: Images.iconLesson1,
-				title: 'Engenharia Civil 5',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
-				totalHours: 50
-			},
-			{
-				id: '6',
-				thumbnail: Images.iconLesson2,
-				title: 'Engenharia Civil 6',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
-				totalHours: 60
-			},
-			{
-				id: '7',
-				thumbnail: Images.iconLesson1,
-				title: 'Engenharia Civil 7',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
-				totalHours: 70
+				title: 'Web for the UI Design',
+				about: 'Get started with the basics.'
 			}
 		];
 		return (
@@ -89,7 +73,7 @@ class ListLessonsScreen extends Component {
 				<FlatList
 					data={data}
 					showsHorizontalScrollIndicator={false}
-					renderItem={({ item }) => this._renderSwipeableCard(item)}
+					renderItem={({ item, index }) => this._renderLesson(item, index)}
 					keyExtractor={this._keyExtractor}
 				/>
 			</View>
@@ -123,7 +107,9 @@ class ListLessonsScreen extends Component {
 				</View>
 				<ScrollView style={styles.container}>
 					<View style={styles.wrapperContent}>
-						<View style={styles.wrapperSwipeableCardsList} />
+						<View style={styles.wrapperSwipeableCardsList}>
+							{this._renderLessonsList()}
+						</View>
 					</View>
 				</ScrollView>
 			</View>

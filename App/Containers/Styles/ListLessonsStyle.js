@@ -112,5 +112,32 @@ export default StyleSheet.create({
 	iconArrowLeft: {
 		height: 14,
 		width: 14
+	},
+	contentLesson: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginBottom: 30
+	},
+	wrapperRadius: {
+		borderRadius: 30,
+		width: 60,
+		height: 60,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	lessonNumber: {
+		fontWeight: 'normal',
+		fontSize: 24,
+		color: Colors.whiteAccent
+	},
+	lessonTitle: {
+		fontWeight: 'normal',
+		fontSize: 18,
+		color: Colors.lightgrey
+	},
+	lessonAbout: {
+		fontWeight: 'normal',
+		fontSize: 14,
+		color: Colors.greyAccent
 	}
 });
