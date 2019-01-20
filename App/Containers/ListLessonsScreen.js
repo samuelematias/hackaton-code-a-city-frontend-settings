@@ -8,7 +8,7 @@ import {
 	FlatList
 } from 'react-native';
 import { Images, Colors } from '../Themes';
-import { Button, FlashCard } from '../Components/Common';
+import { Button, FlashCard, Spinner } from '../Components/Common';
 import { RandomColor } from '../Lib/Utils';
 
 // Styles
@@ -24,8 +24,19 @@ class ListLessonsScreen extends Component {
 
 		this.state = {
 			openQuiz: false,
-			quiz: null
+			quiz: null,
+			score_minimo: null
 		};
+	}
+
+	componentDidMount(){
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		const { item } = params;
+		const quiz = item.quiz.questions;
+		const score_minimo = item.quiz.score_minimo;
+		this.setState({quiz, score_minimo})
 	}
 
 	/**
@@ -41,7 +52,8 @@ class ListLessonsScreen extends Component {
 		const { params } = state;
 		const { item } = params;
 		const quiz = item.quiz.questions;
-		this.setState({ openQuiz: true, quiz });
+		const score_minimo = item.quiz.score_minimo;
+		this.setState({ openQuiz: true, quiz, score_minimo });
 	};
 
 	/**
@@ -131,8 +143,20 @@ class ListLessonsScreen extends Component {
 	};
 
 	render() {
-		const { openQuiz } = this.state;
+		const { openQuiz, quiz, score_minimo } = this.state;
 		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		if (!params && !params.item ){
+			return (
+				<Spinner
+					open={true}
+					disableOnPressSpinner
+				/>
+			)
+		}
+		const { item } = params;
+		const aulas = item.aulas;
 		return (
 			<View style={styles.mainContainer}>
 				<View style={styles.wrapperSectionTitle}>
@@ -171,9 +195,16 @@ class ListLessonsScreen extends Component {
 					</View>
 					{
 						<FlashCard
+							quiz={quiz}
+							score_minimo={score_minimo}
 							open={openQuiz}
+							dataScreen={item}
+							navigation={navigation}
 							onPressOutside={() => this._handleCloseQuiz()}
 						/>
+					}
+					{
+						<Spinner />
 					}
 				</ScrollView>
 			</View>

@@ -65,8 +65,13 @@ class CourseScreen extends Component {
 	}
 
 	componentDidMount() {
-		this._onInitializeApp();
-		this._getCourses();
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		if(!state.params){
+			this._onInitializeApp();
+			this._getCourses();
+		}
 	  }
 
 	  _onInitializeApp = () => {

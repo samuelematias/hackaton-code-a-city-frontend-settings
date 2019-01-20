@@ -8,6 +8,7 @@ import {
 	ScrollView
 } from 'react-native';
 import PropTypes from 'prop-types';
+
 import { Images } from '../../Themes';
 
 //styles
@@ -17,11 +18,45 @@ class FlashCard extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
+		this.state = {
+			correct: 0,
+			wrong: 0,
+			count: 1
+		};
+	}
+
+	_checkOption1(obj){
+		let x = obj;
+		let { correct, wrong, count } = this.state;
+		if (x.option_1 === x.answer){
+			correct += 1;
+			count += 1;
+			this.setState({correct, count})
+		} else {
+			wrong += 1;
+			count += 1;
+			this.setState({wrong, count})
+		}
+	}
+
+	_checkOption2(obj){
+		let x = obj;
+		let { correct, wrong, count } = this.state;
+		if (x.option_2 === x.answer){
+			correct += 1;
+			count += 1;
+			this.setState({correct, count})
+		} else {
+			wrong += 1;
+			count += 1;
+			this.setState({wrong, count})
+		}
 	}
 
 	_renderQuestions() {
 		const {
+			quiz,
+			score_minimo,
 			open,
 			onPressOutside,
 			modalContent,
@@ -34,7 +69,7 @@ class FlashCard extends Component {
 			contentModalStyle,
 			contentOverlayStyle
 		} = this.props;
-		const {} = this.state;
+		const { count } = this.state;
 		return (
 			<View style={styles.questionsWrapper}>
 				<Modal animationType="slide" transparent={false} visible={open}>
@@ -60,9 +95,13 @@ class FlashCard extends Component {
 							<View style={styles.questionsWrapperProgress}>
 								<Text style={styles.questionsProgressText}>
 									Progress{' '}
-									<Text style={styles.questionsProgressCount}>
-										{1 + 1}/{1}
-									</Text>
+									{
+										quiz ?
+										<Text style={styles.questionsProgressCount}>
+											{ count }/{quiz.length - 1}
+										</Text>
+										: null
+									}
 								</Text>
 								<View style={styles.questionsProgress}>
 									<View
@@ -91,32 +130,11 @@ class FlashCard extends Component {
 										showsVerticalScrollIndicator={false}
 										style={styles.scrollContainer}
 									>
-										{/*currentSession.questions[questionIndex].flashcard.back
-											.audio
-											? this.renderPlayAudio(
-													currentSession.questions[questionIndex].flashcard.back
-											  )
-                                            : null*/}
-										{/*currentSession.questions[questionIndex].flashcard.back
-											.image ? (
-											<View style={styles.floatQuestionContentImage}>
-												<Image
-													source={{
-														uri:
-															currentSession.questions[questionIndex].flashcard
-																.back.image
-													}}
-													style={styles.flashcardFrontImage}
-													resizeMode={'cover'}
-												/>
-											</View>
-                                                ) : null*/}
-										{/*currentSession.questions[questionIndex].flashcard.back.text
-											? this.renderLinkPreview(
-													currentSession.questions[questionIndex].flashcard.back
-														.text
-											  )
-                                            : null*/}
+										{
+											quiz ?
+												<Text>{quiz[count.toString()].question}</Text> 
+											: null
+										}
 									</ScrollView>
 								</View>
 							</View>
@@ -139,7 +157,7 @@ class FlashCard extends Component {
 											? styles.buttonDisabledCancel
 											: styles.buttonCancel
 									}
-									onPress={() => {}}
+									onPress={() => {this._checkOption1(quiz[count.toString()])}}
 								>
 									<Image
 										source={Images.iconWrong}
@@ -155,7 +173,7 @@ class FlashCard extends Component {
 											? styles.buttonDisabledSuccess
 											: styles.buttonSuccess
 									}
-									onPress={() => {}}
+									onPress={() => {this._checkOption2(quiz[count.toString()])}}
 								>
 									<Image
 										source={Images.iconCorrect}
@@ -172,7 +190,22 @@ class FlashCard extends Component {
 	}
 
 	render() {
-		return this._renderQuestions();
+		const { count, correct, wrong } = this.state;
+		const { quiz, onPressOutside, navigation, score_minimo } = this.props;
+		if ((quiz) && (count > (quiz.length - 1))){
+			let score = 100/(quiz.length-1)
+			let approved = (score * correct) > score_minimo;
+
+			return navigation.navigate('Welcome',{
+				count,
+				correct,
+				wrong,
+				sum: correct + wrong,
+				approved
+			});
+		} else {
+			return this._renderQuestions();
+		}
 	}
 }
 

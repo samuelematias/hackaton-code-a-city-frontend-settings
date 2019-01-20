@@ -63,7 +63,8 @@ const AppNavigation = StackNavigator(
 		Input: { screen: InputScreen },
 		Login: { screen: LoginScreen },
 		Lessons: { screen: ListLessonsScreen },
-		LessonDetail: { screen: LessonDetailScreen }
+		LessonDetail: { screen: LessonDetailScreen },
+		Course: {screen: CourseScreen}
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
