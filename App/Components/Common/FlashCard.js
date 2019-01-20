@@ -25,31 +25,31 @@ class FlashCard extends Component {
 		};
 	}
 
-	_checkOption1(obj){
+	_checkOption1(obj) {
 		let x = obj;
 		let { correct, wrong, count } = this.state;
-		if (x.option_1 === x.answer){
+		if (x.option_1 === x.answer) {
 			correct += 1;
 			count += 1;
-			this.setState({correct, count})
+			this.setState({ correct, count });
 		} else {
 			wrong += 1;
 			count += 1;
-			this.setState({wrong, count})
+			this.setState({ wrong, count });
 		}
 	}
 
-	_checkOption2(obj){
+	_checkOption2(obj) {
 		let x = obj;
 		let { correct, wrong, count } = this.state;
-		if (x.option_2 === x.answer){
+		if (x.option_2 === x.answer) {
 			correct += 1;
 			count += 1;
-			this.setState({correct, count})
+			this.setState({ correct, count });
 		} else {
 			wrong += 1;
 			count += 1;
-			this.setState({wrong, count})
+			this.setState({ wrong, count });
 		}
 	}
 
@@ -95,13 +95,11 @@ class FlashCard extends Component {
 							<View style={styles.questionsWrapperProgress}>
 								<Text style={styles.questionsProgressText}>
 									Progress{' '}
-									{
-										quiz ?
+									{quiz ? (
 										<Text style={styles.questionsProgressCount}>
-											{ count }/{quiz.length - 1}
+											{count}/{quiz.length - 1}
 										</Text>
-										: null
-									}
+									) : null}
 								</Text>
 								<View style={styles.questionsProgress}>
 									<View
@@ -125,11 +123,9 @@ class FlashCard extends Component {
 										showsVerticalScrollIndicator={false}
 										style={styles.scrollContainer}
 									>
-										{
-											quiz ?
-												<Text>{quiz[count.toString()].question}</Text> 
-											: null
-										}
+										{quiz ? (
+											<Text>{quiz[count.toString()].question}</Text>
+										) : null}
 									</ScrollView>
 								</View>
 							</View>
@@ -152,7 +148,9 @@ class FlashCard extends Component {
 											? styles.buttonDisabledCancel
 											: styles.buttonCancel
 									}
-									onPress={() => {this._checkOption1(quiz[count.toString()])}}
+									onPress={() => {
+										this._checkOption1(quiz[count.toString()]);
+									}}
 								>
 									<Image
 										source={Images.iconWrong}
@@ -168,7 +166,9 @@ class FlashCard extends Component {
 											? styles.buttonDisabledSuccess
 											: styles.buttonSuccess
 									}
-									onPress={() => {this._checkOption2(quiz[count.toString()])}}
+									onPress={() => {
+										this._checkOption2(quiz[count.toString()]);
+									}}
 								>
 									<Image
 										source={Images.iconCorrect}
@@ -187,16 +187,17 @@ class FlashCard extends Component {
 	render() {
 		const { count, correct, wrong } = this.state;
 		const { quiz, onPressOutside, navigation, score_minimo } = this.props;
-		if ((quiz) && (count > (quiz.length - 1))){
-			let score = 100/(quiz.length-1)
-			let approved = (score * correct) > score_minimo;
+		if (quiz && count > quiz.length - 1) {
+			let score = 100 / (quiz.length - 1);
+			let approved = score * correct > score_minimo;
 
-			return navigation.navigate('Welcome',{
+			return navigation.navigate('Result', {
 				count,
 				correct,
 				wrong,
 				sum: correct + wrong,
-				approved
+				approved,
+				note: score > correct ? score * correct : correct * score
 			});
 		} else {
 			return this._renderQuestions();
