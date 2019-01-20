@@ -31,7 +31,7 @@ class ResultScreen extends Component {
 	};
 
 	_renderResultOk = () => {
-		const lessonNote = '7';
+		const lessonNote = '10';
 		return (
 			<View style={styles.wrapperInfo}>
 				<Image
@@ -145,6 +145,20 @@ class ResultScreen extends Component {
 
 		return (
 			<ScrollView style={{ flex: 1, backgroundColor: '#fff' }}>
+				<View style={styles.wrapperSectionTitle}>
+					<TouchableOpacity
+						style={styles.wrapperHeaderLeft}
+						onPress={() => {
+							navigation.goBack();
+						}}
+					>
+						<Image
+							style={styles.iconArrowLeft}
+							source={Images.iconClose}
+							resizeMode={'contain'}
+						/>
+					</TouchableOpacity>
+				</View>
 				{this._handleResult()}
 			</ScrollView>
 		);
