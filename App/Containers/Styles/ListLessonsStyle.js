@@ -139,5 +139,9 @@ export default StyleSheet.create({
 		fontWeight: 'normal',
 		fontSize: 14,
 		color: Colors.greyAccent
+	},
+	actionButtonStyle: {
+		borderRadius: 5,
+		backgroundColor: Colors.orangeAccent
 	}
 });

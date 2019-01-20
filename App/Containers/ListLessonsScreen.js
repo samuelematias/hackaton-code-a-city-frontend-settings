@@ -8,6 +8,7 @@ import {
 	FlatList
 } from 'react-native';
 import { Images, Colors } from '../Themes';
+import { Button } from '../Components/Common';
 import { RandomColor } from '../Lib/Utils';
 
 // Styles
@@ -109,6 +110,13 @@ class ListLessonsScreen extends Component {
 					<View style={styles.wrapperContent}>
 						<View style={styles.wrapperSwipeableCardsList}>
 							{this._renderLessonsList()}
+						</View>
+						<View>
+							<Button
+								labelButton={'Iniciar Quiz'}
+								buttonStyle={styles.actionButtonStyle}
+								onPress={() => {}}
+							/>
 						</View>
 					</View>
 				</ScrollView>
