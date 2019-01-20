@@ -20,7 +20,7 @@ const TabNav = TabNavigator(
 		CourseScreenTab: {
 			screen: CourseScreen
 		},
-		NewsScreen: {
+		NewsScreenTab: {
 			screen: NewsScreen
 		},
 		AboutScreenTab: {
@@ -31,7 +31,7 @@ const TabNav = TabNavigator(
 		tabBarPosition: 'bottom',
 		animationEnabled: false,
 		swipeEnabled: false,
-		initialRouteName: 'CourseScreenTab',
+		initialRouteName: 'NewsScreenTab',
 		tabBarOptions: {
 			showLabel: true,
 			showIcon: true,
@@ -66,7 +66,7 @@ const AppNavigation = StackNavigator(
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
-		initialRouteName: 'Login',
+		initialRouteName: 'TabRoot',
 		/* header main config. */
 		navigationOptions: {
 			headerStyle: {
