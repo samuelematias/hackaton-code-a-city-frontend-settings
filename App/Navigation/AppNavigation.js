@@ -69,7 +69,7 @@ const AppNavigation = StackNavigator(
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
-		initialRouteName: 'Result',
+		initialRouteName: 'Login',
 		/* header main config. */
 		navigationOptions: {
 			headerStyle: {
