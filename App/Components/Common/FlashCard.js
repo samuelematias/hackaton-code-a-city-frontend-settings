@@ -108,12 +108,7 @@ class FlashCard extends Component {
 										style={[
 											styles.questionsProgressBar,
 											{
-												/*
-												flex:
-													questionIndex === 0
-														? 0
-														: questionIndex / currentSession.questions.length
-                                            */
+												flex: count === 1 ? 0 : count / (quiz.length - 1)
 											}
 										]}
 									/>

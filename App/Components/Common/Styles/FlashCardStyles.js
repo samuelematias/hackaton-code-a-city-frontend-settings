@@ -372,7 +372,7 @@ export default StyleSheet.create({
 	},
 	questionsProgressBar: {
 		borderRadius: 4,
-		backgroundColor: '#ec0075',
+		backgroundColor: Colors.orangeAccent,
 		height: 8
 	},
 	card: {
