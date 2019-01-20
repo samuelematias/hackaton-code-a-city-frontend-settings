@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native';
 import { Images, Colors } from '../Themes';
-import { Button } from '../Components/Common';
+import { BrowserApp } from '../Components/Common';
 
 // Styles
 import styles from './Styles/LessonDetailStyles';
@@ -14,10 +14,39 @@ class LessonDetailScreen extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
+		this.state = {
+			openWebview: false,
+			webViewUrl: ''
+		};
 	}
 
+	/**
+	 * Handle to setState on openWebview state (to open the webview).
+	 * @author samuelmataraso
+	 * @method _handleOpenWebview
+	 * @param none
+	 * @return state
+	 */
+	_handleOpenWebview = () => {
+		this.setState({
+			openWebview: true,
+			webViewUrl: 'https://www.youtube.com/watch?v=OLkXqchFSdQ&feature=youtu.be'
+		});
+	};
+
+	/**
+	 * Handle to setState on openWebview state (to close the webview).
+	 * @author samuelmataraso
+	 * @method _handleCloseWebview
+	 * @param none
+	 * @return {state} state
+	 */
+	_handleCloseWebview = () => {
+		this.setState({ openWebview: false, webViewUrl: '' });
+	};
+
 	render() {
+		const { openWebview, webViewUrl } = this.state;
 		const { navigation } = this.props;
 		const lessonTitle = 'Digital Marketing 101';
 		const lessonDescription =
@@ -86,7 +115,10 @@ class LessonDetailScreen extends Component {
 						</Text>
 					</View>
 					<View style={styles.contentYoutube}>
-						<TouchableOpacity style={styles.wrapperYoutube}>
+						<TouchableOpacity
+							style={styles.wrapperYoutube}
+							onPress={() => this._handleOpenWebview()}
+						>
 							<Image
 								style={styles.iconYoutube}
 								source={Images.logoYoutube}
@@ -95,6 +127,15 @@ class LessonDetailScreen extends Component {
 						</TouchableOpacity>
 					</View>
 				</View>
+				{
+					<BrowserApp
+						open={openWebview}
+						onPressOutside={() => {
+							this._handleCloseWebview();
+						}}
+						webViewUrl={webViewUrl}
+					/>
+				}
 			</ScrollView>
 		);
 	}
