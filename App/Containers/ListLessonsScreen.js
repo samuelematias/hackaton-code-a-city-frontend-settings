@@ -31,7 +31,8 @@ class ListLessonsScreen extends Component {
 		const { navigation } = this.props;
 		const lessonId = item.id;
 		const lessonTitle = item.title;
-		const lessonAbout = item.about;
+		const lessonAbout = item.conteudo;
+		const lessonVideo = item.video;
 		let i = index + 1;
 		return (
 			<TouchableOpacity
@@ -74,22 +75,15 @@ class ListLessonsScreen extends Component {
 	};
 
 	_renderLessonsList = () => {
-		const data = [
-			{
-				id: '1',
-				title: 'UI Design for the Web',
-				about: 'Get started with the basics.'
-			},
-			{
-				id: '2',
-				title: 'Web for the UI Design',
-				about: 'Get started with the basics.'
-			}
-		];
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		const { item } = params;
+		const aulas = item.aulas;
 		return (
 			<View>
 				<FlatList
-					data={data}
+					data={aulas}
 					showsHorizontalScrollIndicator={false}
 					renderItem={({ item, index }) => this._renderLesson(item, index)}
 					keyExtractor={this._keyExtractor}
@@ -120,7 +114,7 @@ class ListLessonsScreen extends Component {
 						ellipsizeMode={'tail'}
 						style={styles.sectionTitleStyle}
 					>
-						{'Lessons'}
+						{'Aulas'}
 					</Text>
 				</View>
 				<ScrollView style={styles.container}>

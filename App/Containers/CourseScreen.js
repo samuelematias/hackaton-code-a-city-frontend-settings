@@ -5,10 +5,14 @@ import {
 	Image,
 	View,
 	TouchableOpacity,
-	FlatList
+	FlatList,
+	ActivityIndicator
 } from 'react-native';
+import firebase from '@firebase/app';
+import '@firebase/auth';
+import '@firebase/database';
 import { Images, Colors } from '../Themes';
-import { StatusBarColor, Button } from '../Components/Common';
+import { Spinner, Button } from '../Components/Common';
 // Styles
 import styles from './Styles/CourseScreenStyles';
 
@@ -53,10 +57,49 @@ class CourseScreen extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
+		this.state = {
+			courses: null,
+			loading: true,
+			showSpinner: true
+		};
 	}
 
+	componentDidMount() {
+		this._onInitializeApp();
+		this._getCourses();
+	  }
+
+	  _onInitializeApp = () => {
+			// Initialize Firebase
+			return firebase.initializeApp({
+				apiKey: "AIzaSyAwFtUEijpONqO-bb7ib79mk9uY_3v0eTY",
+				authDomain: "jambo-tech-73914.firebaseapp.com",
+				databaseURL: "https://jambo-tech-73914.firebaseio.com",
+				projectId: "jambo-tech-73914",
+				storageBucket: "jambo-tech-73914.appspot.com",
+				messagingSenderId: "450730525637"
+			});
+		};
+
+		_getCourses = () => {
+			// get courses
+			const coursesRef = firebase.database().ref("cursos");
+			coursesRef.on('value', (snapshot) => {
+				let data = snapshot.val();
+				let courses = Object.values(data);
+				this.setState({courses: courses, loading: false, showSpinner: false});
+			})
+		}
+
 	_keyExtractor = item => item.id;
+
+	_handleShowSpinner = () => {
+		this.setState({ showSpinner: true });
+	};
+
+	_handleCloseSpinner = () => {
+		this.setState({ showSpinner: false });
+	};
 
 	_renderSwipeableCard = item => {
 		const { navigation } = this.props;
@@ -64,20 +107,17 @@ class CourseScreen extends Component {
 		const cardThumbnail = item.thumbnail;
 		const cardTitle = item.title;
 		const cardAbout = item.about;
-		const cardTotalHours =
-			item.totalHours === 1
-				? item.totalHours + ' Hora'
-				: item.totalHours + ' Horas';
+		const cardTotalHours = item.totalHours;
 
 		return (
 			<TouchableOpacity
 				key={cardId}
 				style={styles.contentSwipeableCardsList}
-				onPress={() => navigation.navigate('Lessons')}
+				onPress={() => navigation.navigate('Lessons', {item})}
 			>
 				<View style={styles.wrapperSwipeableCard}>
 					<Image
-						source={cardThumbnail}
+						source={{uri: cardThumbnail}}
 						style={styles.thumbnailSwipeableCard}
 						resizeMode={'contain'}
 					/>
@@ -130,68 +170,10 @@ class CourseScreen extends Component {
 	};
 
 	_renderSwipeableCardsList = () => {
-		const data = [
-			{
-				id: '1',
-				thumbnail: Images.iconLesson1,
-				title: 'Engenharia Civil 1',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus.',
-				totalHours: 10
-			},
-			{
-				id: '2',
-				thumbnail: Images.iconLesson2,
-				title: 'Engenharia Civil 2',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus.',
-				totalHours: 1
-			},
-			{
-				id: '3',
-				thumbnail: Images.iconLesson1,
-				title: 'Engenharia Civil 3',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus.',
-				totalHours: 30
-			},
-			{
-				id: '4',
-				thumbnail: Images.iconLesson2,
-				title: 'Engenharia Civil 4',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
-				totalHours: 40
-			},
-			{
-				id: '5',
-				thumbnail: Images.iconLesson1,
-				title: 'Engenharia Civil 5',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
-				totalHours: 50
-			},
-			{
-				id: '6',
-				thumbnail: Images.iconLesson2,
-				title: 'Engenharia Civil 6',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
-				totalHours: 60
-			},
-			{
-				id: '7',
-				thumbnail: Images.iconLesson1,
-				title: 'Engenharia Civil 7',
-				about:
-					'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus',
-				totalHours: 70
-			}
-		];
 		return (
 			<View>
 				<FlatList
-					data={data}
+					data={this.state.courses}
 					showsHorizontalScrollIndicator={false}
 					renderItem={({ item }) => this._renderSwipeableCard(item)}
 					keyExtractor={this._keyExtractor}
@@ -201,6 +183,15 @@ class CourseScreen extends Component {
 	};
 
 	render() {
+		const { courses } = this.state;
+		if (!courses){
+			return (
+				<Spinner
+					open={true}
+					disableOnPressSpinner
+				/>
+			)
+		}
 		return (
 			<View style={styles.mainContainer}>
 				<View style={styles.wrapperSectionTitle}>
@@ -219,6 +210,10 @@ class CourseScreen extends Component {
 						</View>
 					</View>
 				</ScrollView>
+
+				{
+					<Spinner />
+				}
 			</View>
 		);
 	}
