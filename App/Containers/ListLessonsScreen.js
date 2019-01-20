@@ -23,9 +23,37 @@ class ListLessonsScreen extends Component {
 		super(props);
 
 		this.state = {
-			lol: false
+			openQuiz: false,
+			quiz: null
 		};
 	}
+
+	/**
+	 * Handle to setState on _handleOpenQuiz state (to open the modal).
+	 * @author samuelmataraso
+	 * @method _handleOpenQuiz
+	 * @param none
+	 * @return state
+	 */
+	_handleOpenQuiz = () => {
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		const { item } = params;
+		const quiz = item.quiz.questions;
+		this.setState({ openQuiz: true, quiz });
+	};
+
+	/**
+	 * Handle to setState on _handleOpenQuiz state (to close the modal).
+	 * @author samuelmataraso
+	 * @method _handleOpenQuiz
+	 * @param none
+	 * @return {state} state
+	 */
+	_handleCloseQuiz = () => {
+		this.setState({ openQuiz: false });
+	};
 
 	_keyExtractor = item => item.id;
 
@@ -103,6 +131,7 @@ class ListLessonsScreen extends Component {
 	};
 
 	render() {
+		const { openQuiz } = this.state;
 		const { navigation } = this.props;
 		return (
 			<View style={styles.mainContainer}>
@@ -136,15 +165,16 @@ class ListLessonsScreen extends Component {
 							<Button
 								labelButton={'Iniciar Quiz'}
 								buttonStyle={styles.actionButtonStyle}
-								onPress={() => {
-									this.setState({
-										lol: true
-									});
-								}}
+								onPress={() => this._handleOpenQuiz()}
 							/>
 						</View>
 					</View>
-					{<FlashCard open={this.state.lol} />}
+					{
+						<FlashCard
+							open={openQuiz}
+							onPressOutside={() => this._handleCloseQuiz()}
+						/>
+					}
 				</ScrollView>
 			</View>
 		);
