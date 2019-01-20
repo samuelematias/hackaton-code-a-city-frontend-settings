@@ -8,7 +8,7 @@ import {
 	FlatList
 } from 'react-native';
 import { Images, Colors } from '../Themes';
-import { Button } from '../Components/Common';
+import { Button, FlashCard } from '../Components/Common';
 import { RandomColor } from '../Lib/Utils';
 
 // Styles
@@ -22,7 +22,9 @@ class ListLessonsScreen extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
+		this.state = {
+			lol: false
+		};
 	}
 
 	_keyExtractor = item => item.id;
@@ -134,10 +136,15 @@ class ListLessonsScreen extends Component {
 							<Button
 								labelButton={'Iniciar Quiz'}
 								buttonStyle={styles.actionButtonStyle}
-								onPress={() => {}}
+								onPress={() => {
+									this.setState({
+										lol: true
+									});
+								}}
 							/>
 						</View>
 					</View>
+					{<FlashCard open={this.state.lol} />}
 				</ScrollView>
 			</View>
 		);

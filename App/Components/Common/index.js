@@ -10,6 +10,7 @@ import FullModal from './FullModal';
 import Icon from './Icon';
 import StatusBarColor from './StatusBarColor';
 import BrowserApp from './BrowserApp';
+import FlashCard from './FlashCard';
 
 export {
 	Button,
@@ -23,5 +24,6 @@ export {
 	FullModal,
 	Icon,
 	StatusBarColor,
-	BrowserApp
+	BrowserApp,
+	FlashCard
 };
