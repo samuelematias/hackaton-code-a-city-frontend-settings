@@ -40,7 +40,10 @@ const images = {
 	lessonDetail: require('../Images/lesson-detail.png'),
 	logoYoutube: require('../Images/logo-youtube.png'),
 	iconShareWebView: require('../Images/Icons/icon-share.png'),
-	iconClose: require('../Images/Icons/icon-close.png')
+	iconCorrect: require('../Images/Icons/icon-flashcard-correct.png'),
+	iconWrong: require('../Images/Icons/icon-flashcard-wrong.png'),
+	iconClose: require('../Images/Icons/icon-close.png'),
+	cardBack: require('../Images/card-back.png')
 };
 
 export default images;
