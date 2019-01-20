@@ -193,11 +193,7 @@ class NewsScreen extends Component {
 					</Text>
 				</View>
 				<ScrollView style={styles.container}>
-					<View style={styles.wrapperContent}>
-						<View style={styles.wrapperSwipeableCardsList}>
-							{this._renderNewsList()}
-						</View>
-					</View>
+					<View style={styles.wrapperContent}>{this._renderNewsList()}</View>
 				</ScrollView>
 			</View>
 		);

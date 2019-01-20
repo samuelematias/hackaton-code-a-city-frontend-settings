@@ -103,7 +103,7 @@ export default StyleSheet.create({
 	},
 	wrapperSectionTitle: {
 		paddingBottom: 10,
-		marginTop: Platform.OS === 'ios' ? 50 : 40,
+		marginTop: 40,
 		marginLeft: 20,
 		marginRight: 20,
 		flexDirection: 'row',
