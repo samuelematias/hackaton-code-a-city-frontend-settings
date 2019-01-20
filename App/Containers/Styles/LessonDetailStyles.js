@@ -147,7 +147,7 @@ export default StyleSheet.create({
 		top: 40,
 		left: 20
 	},
-	subTittleStyle: {
+	subTitleStyle: {
 		fontWeight: 'normal',
 		fontSize: 10,
 		color: Colors.skinnerBlack,
@@ -169,5 +169,10 @@ export default StyleSheet.create({
 	iconYoutube: {
 		width: 50,
 		height: 50
+	},
+	descriptionStyle: {
+		fontWeight: 'normal',
+		fontSize: 14,
+		color: Colors.skinnerBlack
 	}
 });

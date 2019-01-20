@@ -86,12 +86,7 @@ class LessonDetailScreen extends Component {
 						<Text
 							numberOfLines={2}
 							ellipsizeMode={'tail'}
-							style={{
-								fontWeight: 'normal',
-								fontSize: 10,
-								color: Colors.skinnerBlack,
-								opacity: 0.6
-							}}
+							style={styles.subTitleStyle}
 						>
 							{'descrição'.toUpperCase()}
 						</Text>
@@ -100,7 +95,7 @@ class LessonDetailScreen extends Component {
 						<Text
 							numberOfLines={10}
 							ellipsizeMode={'tail'}
-							style={styles.subTitleStyle}
+							style={styles.descriptionStyle}
 						>
 							{lessonDescription}
 						</Text>
