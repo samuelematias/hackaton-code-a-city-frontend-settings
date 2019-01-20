@@ -28,12 +28,17 @@ class ListLessonsScreen extends Component {
 	_keyExtractor = item => item.id;
 
 	_renderLesson = (item, index) => {
+		const { navigation } = this.props;
 		const lessonId = item.id;
 		const lessonTitle = item.title;
 		const lessonAbout = item.about;
 		let i = index + 1;
 		return (
-			<TouchableOpacity key={lessonId} style={styles.contentLesson}>
+			<TouchableOpacity
+				key={lessonId}
+				style={styles.contentLesson}
+				onPress={() => navigation.navigate('LessonDetail')}
+			>
 				<View
 					style={[
 						styles.wrapperRadius,
@@ -49,8 +54,20 @@ class ListLessonsScreen extends Component {
 					<Text style={styles.lessonNumber}>{i}</Text>
 				</View>
 				<View style={{ paddingLeft: 20 }}>
-					<Text style={styles.lessonTitle}>{lessonTitle}</Text>
-					<Text style={styles.lessonAbout}>{lessonAbout}</Text>
+					<Text
+						style={styles.lessonTitle}
+						numberOfLines={2}
+						ellipsizeMode={'tail'}
+					>
+						{lessonTitle}
+					</Text>
+					<Text
+						style={styles.lessonAbout}
+						numberOfLines={2}
+						ellipsizeMode={'tail'}
+					>
+						{lessonAbout}
+					</Text>
 				</View>
 			</TouchableOpacity>
 		);
