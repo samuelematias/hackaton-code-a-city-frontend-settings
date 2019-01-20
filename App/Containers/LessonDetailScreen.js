@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-	ScrollView,
-	Text,
-	Image,
-	View,
-	TouchableOpacity,
-	ImageBackground
-} from 'react-native';
+import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native';
 import { Images, Colors } from '../Themes';
 import { Button } from '../Components/Common';
 
@@ -30,7 +23,7 @@ class LessonDetailScreen extends Component {
 		const lessonDescription =
 			'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum';
 		return (
-			<ScrollView style={{ flex: 1 }}>
+			<ScrollView style={{ flex: 1, marginBottom: 10 }}>
 				<Image
 					source={Images.lessonDetail}
 					style={styles.containerBackground}
@@ -78,11 +71,7 @@ class LessonDetailScreen extends Component {
 						<Text
 							numberOfLines={10}
 							ellipsizeMode={'tail'}
-							style={{
-								fontWeight: 'normal',
-								fontSize: 14,
-								color: Colors.skinnerBlack
-							}}
+							style={styles.subTitleStyle}
 						>
 							{lessonDescription}
 						</Text>
@@ -91,15 +80,19 @@ class LessonDetailScreen extends Component {
 						<Text
 							numberOfLines={2}
 							ellipsizeMode={'tail'}
-							style={{
-								fontWeight: 'normal',
-								fontSize: 10,
-								color: Colors.skinnerBlack,
-								opacity: 0.6
-							}}
+							style={styles.subTitleStyle}
 						>
 							{'Video'.toUpperCase()}
 						</Text>
+					</View>
+					<View style={styles.contentYoutube}>
+						<TouchableOpacity style={styles.wrapperYoutube}>
+							<Image
+								style={styles.iconYoutube}
+								source={Images.logoYoutube}
+								resizeMode={'contain'}
+							/>
+						</TouchableOpacity>
 					</View>
 				</View>
 			</ScrollView>
