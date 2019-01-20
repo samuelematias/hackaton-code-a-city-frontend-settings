@@ -26,12 +26,19 @@ class ResultScreen extends Component {
 	componentDidMount() {}
 
 	_handleResult = () => {
-		// return this._renderResultOk();
-		return this._renderResultNok();
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		const { note, approved } = params;
+		if (approved) {
+			return this._renderResultOk(note);
+		} else {
+			return this._renderResultNok(note);
+		}
 	};
 
-	_renderResultOk = () => {
-		const lessonNote = '10';
+	_renderResultOk = note => {
+		const lessonNote = note;
 		return (
 			<View style={styles.wrapperInfo}>
 				<Image
@@ -89,8 +96,8 @@ class ResultScreen extends Component {
 		);
 	};
 
-	_renderResultNok = () => {
-		const lessonNote = '7';
+	_renderResultNok = note => {
+		const lessonNote = note;
 		return (
 			<View style={styles.wrapperInfo}>
 				<Image
