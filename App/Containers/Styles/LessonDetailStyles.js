@@ -103,11 +103,9 @@ export default StyleSheet.create({
 	},
 	wrapperSectionTitle: {
 		paddingBottom: 10,
-		marginTop: Platform.OS === 'ios' ? 50 : 40,
 		marginLeft: 20,
 		marginRight: 20,
-		flexDirection: 'row',
-		alignItems: 'center'
+		alignItems: 'flex-start'
 	},
 	iconArrowLeft: {
 		height: 14,
@@ -147,5 +145,10 @@ export default StyleSheet.create({
 	containerBackground: {
 		width: '100%',
 		height: 370
+	},
+	buttonAbsolute: {
+		position: 'absolute',
+		top: 50,
+		left: 20
 	}
 });

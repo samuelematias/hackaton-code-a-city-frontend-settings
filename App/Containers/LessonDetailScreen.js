@@ -7,7 +7,7 @@ import {
 	TouchableOpacity,
 	ImageBackground
 } from 'react-native';
-import { Images } from '../Themes';
+import { Images, Colors } from '../Themes';
 import { Button } from '../Components/Common';
 
 // Styles
@@ -26,6 +26,9 @@ class LessonDetailScreen extends Component {
 
 	render() {
 		const { navigation } = this.props;
+		const lessonTitle = 'Digital Marketing 101';
+		const lessonDescription =
+			'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum';
 		return (
 			<ScrollView style={{ flex: 1 }}>
 				<Image
@@ -33,7 +36,7 @@ class LessonDetailScreen extends Component {
 					style={styles.containerBackground}
 					resizeMode={'stretch'}
 				/>
-				<View style={{ position: 'absolute', top: 50, left: 20 }}>
+				<View style={styles.buttonAbsolute}>
 					<TouchableOpacity
 						style={styles.wrapperHeaderLeft}
 						onPress={() => {
@@ -47,12 +50,58 @@ class LessonDetailScreen extends Component {
 						/>
 					</TouchableOpacity>
 				</View>
-				<View
-					style={{
-						alignSelf: 'center',
-						backgroundColor: 'red'
-					}}
-				/>
+				<View style={styles.wrapperSectionTitle}>
+					<View>
+						<Text
+							numberOfLines={2}
+							ellipsizeMode={'tail'}
+							style={styles.sectionTitleStyle}
+						>
+							{'Digital Marketing 101'}
+						</Text>
+					</View>
+					<View style={{ marginTop: 20 }}>
+						<Text
+							numberOfLines={2}
+							ellipsizeMode={'tail'}
+							style={{
+								fontWeight: 'normal',
+								fontSize: 10,
+								color: Colors.skinnerBlack,
+								opacity: 0.6
+							}}
+						>
+							{'descrição'.toUpperCase()}
+						</Text>
+					</View>
+					<View style={{ marginTop: 10 }}>
+						<Text
+							numberOfLines={10}
+							ellipsizeMode={'tail'}
+							style={{
+								fontWeight: 'normal',
+								fontSize: 14,
+								color: Colors.skinnerBlack
+							}}
+						>
+							{lessonDescription}
+						</Text>
+					</View>
+					<View style={{ marginTop: 20 }}>
+						<Text
+							numberOfLines={2}
+							ellipsizeMode={'tail'}
+							style={{
+								fontWeight: 'normal',
+								fontSize: 10,
+								color: Colors.skinnerBlack,
+								opacity: 0.6
+							}}
+						>
+							{'Video'.toUpperCase()}
+						</Text>
+					</View>
+				</View>
 			</ScrollView>
 		);
 	}
