@@ -43,7 +43,11 @@ const images = {
 	iconCorrect: require('../Images/Icons/icon-flashcard-correct.png'),
 	iconWrong: require('../Images/Icons/icon-flashcard-wrong.png'),
 	iconClose: require('../Images/Icons/icon-close.png'),
-	cardBack: require('../Images/card-back.png')
+	cardBack: require('../Images/not-cool.png'),
+	cool: require('../Images/cool.png'),
+	clap: require('../Images/clap.png'),
+	crying: require('../Images/crying.png'),
+	smile: require('../Images/smile.png')
 };
 
 export default images;

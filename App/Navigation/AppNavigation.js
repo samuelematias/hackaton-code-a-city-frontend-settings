@@ -15,6 +15,7 @@ import LoginScreen from '../Containers/LoginScreen';
 import CourseScreen from '../Containers/CourseScreen';
 import ListLessonsScreen from '../Containers/ListLessonsScreen';
 import LessonDetailScreen from '../Containers/LessonDetailScreen';
+import ResultScreen from '../Containers/ResultScreen';
 
 const TabNav = TabNavigator(
 	{
@@ -63,11 +64,12 @@ const AppNavigation = StackNavigator(
 		Input: { screen: InputScreen },
 		Login: { screen: LoginScreen },
 		Lessons: { screen: ListLessonsScreen },
-		LessonDetail: { screen: LessonDetailScreen }
+		LessonDetail: { screen: LessonDetailScreen },
+		Result: { screen: ResultScreen }
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
-		initialRouteName: 'TabRoot',
+		initialRouteName: 'Result',
 		/* header main config. */
 		navigationOptions: {
 			headerStyle: {
