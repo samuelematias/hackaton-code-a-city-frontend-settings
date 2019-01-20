@@ -65,36 +65,18 @@ class CourseScreen extends Component {
 	}
 
 	componentDidMount() {
-		const { navigation } = this.props;
-		const { state } = navigation;
-		const { params } = state;
-		if(!state.params){
-			this._onInitializeApp();
-			this._getCourses();
-		}
-	  }
+		this._getCourses();
+	}
 
-	  _onInitializeApp = () => {
-			// Initialize Firebase
-			return firebase.initializeApp({
-				apiKey: "AIzaSyAwFtUEijpONqO-bb7ib79mk9uY_3v0eTY",
-				authDomain: "jambo-tech-73914.firebaseapp.com",
-				databaseURL: "https://jambo-tech-73914.firebaseio.com",
-				projectId: "jambo-tech-73914",
-				storageBucket: "jambo-tech-73914.appspot.com",
-				messagingSenderId: "450730525637"
-			});
-		};
-
-		_getCourses = () => {
-			// get courses
-			const coursesRef = firebase.database().ref("cursos");
-			coursesRef.on('value', (snapshot) => {
-				let data = snapshot.val();
-				let courses = Object.values(data);
-				this.setState({courses: courses, loading: false, showSpinner: false});
-			})
-		}
+	_getCourses = () => {
+		// get courses
+		const coursesRef = firebase.database().ref('cursos');
+		coursesRef.on('value', snapshot => {
+			let data = snapshot.val();
+			let courses = Object.values(data);
+			this.setState({ courses: courses, loading: false, showSpinner: false });
+		});
+	};
 
 	_keyExtractor = item => item.id;
 
@@ -118,11 +100,11 @@ class CourseScreen extends Component {
 			<TouchableOpacity
 				key={cardId}
 				style={styles.contentSwipeableCardsList}
-				onPress={() => navigation.navigate('Lessons', {item})}
+				onPress={() => navigation.navigate('Lessons', { item })}
 			>
 				<View style={styles.wrapperSwipeableCard}>
 					<Image
-						source={{uri: cardThumbnail}}
+						source={{ uri: cardThumbnail }}
 						style={styles.thumbnailSwipeableCard}
 						resizeMode={'contain'}
 					/>
@@ -189,13 +171,8 @@ class CourseScreen extends Component {
 
 	render() {
 		const { courses } = this.state;
-		if (!courses){
-			return (
-				<Spinner
-					open={true}
-					disableOnPressSpinner
-				/>
-			)
+		if (!courses) {
+			return <Spinner open={true} disableOnPressSpinner />;
 		}
 		return (
 			<View style={styles.mainContainer}>
@@ -216,9 +193,7 @@ class CourseScreen extends Component {
 					</View>
 				</ScrollView>
 
-				{
-					<Spinner />
-				}
+				{<Spinner />}
 			</View>
 		);
 	}
