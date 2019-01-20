@@ -37,7 +37,8 @@ const images = {
 	iconFb: require('../Images/Icons/icon-fb.png'),
 	newJambo: require('../Images/new-logo-jambo.png'),
 	iconFree: require('../Images/Icons/icon-free.png'),
-	lessonDetail: require('../Images/lesson-detail.png')
+	lessonDetail: require('../Images/lesson-detail.png'),
+	youtube: require('../Images/youtube.png')
 };
 
 export default images;
