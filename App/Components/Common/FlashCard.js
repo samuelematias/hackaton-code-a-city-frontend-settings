@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { NavigationActions } from 'react-navigation';
+
 import { Images } from '../../Themes';
 
 //styles
@@ -78,7 +80,14 @@ class FlashCard extends Component {
 							<View style={styles.questionsHeader}>
 								<TouchableOpacity
 									style={styles.buttonLeft}
-									onPress={() => onPressOutside()}
+									onPress={() => {
+										this.setState({
+											correct: 0,
+											wrong: 0,
+											count: 1
+										});
+										return onPressOutside();
+									}}
 								>
 									<Image
 										source={Images.iconClose}
@@ -191,14 +200,38 @@ class FlashCard extends Component {
 			let score = 100 / (quiz.length - 1);
 			let approved = score * correct > score_minimo;
 
-			return navigation.navigate('Result', {
-				count,
-				correct,
-				wrong,
-				sum: correct + wrong,
-				approved,
-				note: score > correct ? score * correct : correct * score
+			const resetAction = NavigationActions.reset({
+				index: 1,
+				actions: [
+					NavigationActions.navigate({
+						routeName: 'TabRoot',
+						params: {},
+						action: NavigationActions.navigate({
+							routeName: 'CourseScreenTab'
+						})
+					}),
+					NavigationActions.navigate({
+						routeName: 'Result',
+						params: {
+							count,
+							correct,
+							wrong,
+							sum: correct + wrong,
+							approved,
+							note: score > correct ? score * correct : correct * score
+						}
+					})
+				]
 			});
+			return navigation.dispatch(resetAction);
+			// return navigation.navigate('Result', {
+			// count,
+			// correct,
+			// wrong,
+			// sum: correct + wrong,
+			// approved,
+			// note: score > correct ? score * correct : correct * score
+			// });
 		} else {
 			return this._renderQuestions();
 		}
