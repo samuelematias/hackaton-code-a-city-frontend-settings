@@ -20,6 +20,17 @@ class LessonDetailScreen extends Component {
 		};
 	}
 
+	componentDidMount() {
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		const { videoLink } = params;
+
+		this.setState({
+			webViewUrl: videoLink ? videoLink : 'https://www.google.com'
+		});
+	}
+
 	/**
 	 * Handle to setState on openWebview state (to open the webview).
 	 * @author samuelmataraso
@@ -28,9 +39,13 @@ class LessonDetailScreen extends Component {
 	 * @return state
 	 */
 	_handleOpenWebview = () => {
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		const { videoLink } = params;
 		this.setState({
 			openWebview: true,
-			webViewUrl: 'https://www.youtube.com/watch?v=OLkXqchFSdQ&feature=youtu.be'
+			webViewUrl: videoLink ? videoLink : 'https://www.google.com'
 		});
 	};
 
@@ -48,9 +63,11 @@ class LessonDetailScreen extends Component {
 	render() {
 		const { openWebview, webViewUrl } = this.state;
 		const { navigation } = this.props;
-		const lessonTitle = 'Digital Marketing 101';
-		const lessonDescription =
-			'Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus. Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum';
+		const { state } = navigation;
+		const { params } = state;
+		const { title, description } = params;
+		const lessonTitle = title;
+		const lessonDescription = description;
 		return (
 			<ScrollView style={{ flex: 1, marginBottom: 10 }}>
 				<Image
@@ -79,7 +96,7 @@ class LessonDetailScreen extends Component {
 							ellipsizeMode={'tail'}
 							style={styles.sectionTitleStyle}
 						>
-							{'Digital Marketing 101'}
+							{lessonTitle}
 						</Text>
 					</View>
 					<View style={{ marginTop: 20 }}>

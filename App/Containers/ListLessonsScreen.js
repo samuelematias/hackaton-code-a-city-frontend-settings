@@ -38,7 +38,13 @@ class ListLessonsScreen extends Component {
 			<TouchableOpacity
 				key={lessonId}
 				style={styles.contentLesson}
-				onPress={() => navigation.navigate('LessonDetail')}
+				onPress={() =>
+					navigation.navigate('LessonDetail', {
+						title: lessonTitle,
+						description: lessonAbout,
+						videoLink: lessonVideo
+					})
+				}
 			>
 				<View
 					style={[
