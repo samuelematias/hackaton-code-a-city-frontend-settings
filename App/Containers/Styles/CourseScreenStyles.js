@@ -73,7 +73,8 @@ export default StyleSheet.create({
 		flexDirection: 'row',
 		paddingTop: 10,
 		marginBottom: 30,
-		flex: 1
+		flex: 1,
+		alignItems: 'center'
 	},
 	iconFreeSwipeableCard: {
 		width: 40,
