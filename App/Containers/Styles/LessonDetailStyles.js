@@ -143,5 +143,9 @@ export default StyleSheet.create({
 	actionButtonStyle: {
 		borderRadius: 5,
 		backgroundColor: Colors.orangeAccent
+	},
+	containerBackground: {
+		width: '100%',
+		height: 370
 	}
 });
