@@ -20,24 +20,38 @@ class FlashCard extends Component {
 		this.state = {};
 	}
 
-	//Modal
-	renderQuestions() {
-		const { open } = this.props;
-
+	_renderQuestions() {
+		const {
+			open,
+			onPressOutside,
+			modalContent,
+			overlayStyle,
+			showButtonOnOverlay,
+			showButtonOnModal,
+			buttonOnOverlayStyle,
+			buttonOnModalStyle,
+			roundCorner,
+			contentModalStyle,
+			contentOverlayStyle
+		} = this.props;
+		const {} = this.state;
 		return (
 			<View style={styles.questionsWrapper}>
 				<Modal animationType="slide" transparent={false} visible={open}>
 					<View style={styles.questionsContainer}>
 						<View style={styles.questionsWrapperHeader}>
 							<View style={styles.questionsHeader}>
-								<TouchableOpacity style={styles.buttonLeft} onPress={() => {}}>
+								<TouchableOpacity
+									style={styles.buttonLeft}
+									onPress={() => onPressOutside()}
+								>
 									<Image
 										source={Images.iconClose}
 										style={styles.iconNavBar}
 										resizeMode={'contain'}
 									/>
 								</TouchableOpacity>
-								<Text style={styles.questionsHeaderText}>{'Flashcards'}</Text>
+								<Text style={styles.questionsHeaderText}>{'Quiz'}</Text>
 								<View style={styles.buttonRight} />
 							</View>
 						</View>
@@ -157,75 +171,8 @@ class FlashCard extends Component {
 		);
 	}
 
-	/**
-	 * render the modal
-	 * @author samuelmataraso
-	 * @method renderSeparator
-	 * @param none
-	 * @return {func} render
-	 */
-	_renderModal = () => {
-		const {
-			open,
-			onPressOutside,
-			modalContent,
-			overlayStyle,
-			showButtonOnOverlay,
-			showButtonOnModal,
-			buttonOnOverlayStyle,
-			buttonOnModalStyle,
-			roundCorner,
-			contentModalStyle,
-			contentOverlayStyle
-		} = this.props;
-		const {} = this.state;
-
-		return (
-			<Modal
-				animationType="slide"
-				transparent={true}
-				visible={open}
-				onRequestClose={() => {}}
-			>
-				<View style={styles.containerBottomModal}>
-					<TouchableOpacity
-						style={[styles.bottomOverlay, overlayStyle]}
-						onPress={() => onPressOutside()}
-					>
-						<View style={[styles.wrapperOverlay, contentOverlayStyle]}>
-							{showButtonOnOverlay && (
-								<View style={[styles.buttonOnOverlay, buttonOnOverlayStyle]} />
-							)}
-						</View>
-					</TouchableOpacity>
-					<View
-						style={[
-							styles.wrapperContent,
-							contentModalStyle,
-							{
-								borderTopLeftRadius: roundCorner,
-								borderTopRightRadius: roundCorner
-							}
-						]}
-					>
-						{showButtonOnModal && (
-							<TouchableOpacity
-								style={styles.wrapperButtonOnModal}
-								onPress={() => onPressOutside()}
-								activeOpacity={1}
-							>
-								<View style={[styles.buttonOnModal, buttonOnModalStyle]} />
-							</TouchableOpacity>
-						)}
-						{modalContent()}
-					</View>
-				</View>
-			</Modal>
-		);
-	};
-
 	render() {
-		return this.renderQuestions();
+		return this._renderQuestions();
 	}
 }
 
