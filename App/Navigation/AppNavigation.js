@@ -6,7 +6,7 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Colors } from '../Themes';
 
 import LaunchScreen from '../Containers/LaunchScreen';
-import ExampleScreen from '../Containers/ExampleScreen';
+import NewsScreen from '../Containers/NewsScreen';
 import AboutScreen from '../Containers/AboutScreen';
 import WelcomeScreen from '../Containers/WelcomeScreen';
 import InputScreen from '../Containers/InputScreen';
@@ -20,8 +20,8 @@ const TabNav = TabNavigator(
 		CourseScreenTab: {
 			screen: CourseScreen
 		},
-		ExampleScreenTab: {
-			screen: ExampleScreen
+		NewsScreen: {
+			screen: NewsScreen
 		},
 		AboutScreenTab: {
 			screen: AboutScreen
@@ -66,7 +66,7 @@ const AppNavigation = StackNavigator(
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
-		initialRouteName: 'LessonDetail',
+		initialRouteName: 'Login',
 		/* header main config. */
 		navigationOptions: {
 			headerStyle: {
