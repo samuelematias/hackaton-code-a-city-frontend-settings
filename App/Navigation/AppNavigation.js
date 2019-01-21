@@ -70,6 +70,7 @@ const AppNavigation = StackNavigator(
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
 		initialRouteName: 'Login',
+		cardStyle: { shadowColor: 'transparent' },
 		/* header main config. */
 		navigationOptions: {
 			headerStyle: {
