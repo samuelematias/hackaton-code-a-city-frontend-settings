@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React, { Component, Fragment } from 'react';
+import { View, SafeAreaView, StatusBar, Platform } from 'react-native';
 import firebase from '@firebase/app';
 import '@firebase/auth';
 import '@firebase/database';
@@ -24,12 +24,27 @@ class RootContainer extends Component {
 			messagingSenderId: '450730525637'
 		});
 	};
+
+	_handlerStatusBar = () => {
+		if (Platform.OS === 'ios') {
+			return <StatusBar barStyle="light-content" />;
+		} else {
+			return (
+				<StatusBarColor backgroundColor="#e36d0d" barStyle="light-content" />
+			);
+		}
+	};
 	render() {
 		return (
-			<View style={styles.applicationView}>
-				<StatusBarColor backgroundColor="#e36d0d" barStyle="light-content" />
-				<AppNavigation />
-			</View>
+			<Fragment>
+				<SafeAreaView style={{ flex: 0, backgroundColor: '#e36d0d' }} />
+				<SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+					<View style={styles.applicationView}>
+						{this._handlerStatusBar()}
+						<AppNavigation />
+					</View>
+				</SafeAreaView>
+			</Fragment>
 		);
 	}
 }
